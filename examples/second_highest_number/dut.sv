@@ -22,6 +22,7 @@ module dut #(
     wire [ADDRW-1:0] raddr_in;
     wire [ADDRW-1:0] raddr_out;
     wire [N-1:0] rdata;
+    wire is_highest;
     wire [N-1:0] highest_in;
     wire [N-1:0] second_highest_in;
 
@@ -44,8 +45,9 @@ module dut #(
     /* Increment read address every cycle */
     assign raddr_in = raddr_out + 1'b1;
 
-    assign highest_in = (rdata > highest_out) ? rdata : highest_out;
+    assign is_highest = (rdata > highest_out);
+    assign highest_in = is_highest ? rdata : highest_out;
     /* The second highest value is the previous highest value */
-    assign second_highest_in = (rdata > highest_out) ? highest_out : second_highest_out;
+    assign second_highest_in = is_highest ? highest_out : second_highest_out;
     
 endmodule
