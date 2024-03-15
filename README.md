@@ -2,7 +2,7 @@
 
 This is a template that can be used to design an simulate RTL designs on your PC using the open-source verilog compiler [Verilator](https://www.veripool.org/verilator/).
 
-## Installation
+## Prerequisites
 
 1. [Install verilator](https://verilator.org/guide/latest/install.html)
     - On Ubuntu: `apt-get install verilator`
